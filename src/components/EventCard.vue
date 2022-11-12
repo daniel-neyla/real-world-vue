@@ -1,8 +1,10 @@
 <template>
-  <div class="event-card">
-    <p>@ {{ event.time }} on {{ event.title }}</p>
-    <h4>{{ event.title }}</h4>
-  </div>
+  <router-link to="/event/123">
+    <div class="event-card">
+      <p>@ {{ event.time }} on {{ event.title }}</p>
+      <h4>{{ event.title }}</h4>
+    </div>
+  </router-link>
 </template>
 
 <script>
