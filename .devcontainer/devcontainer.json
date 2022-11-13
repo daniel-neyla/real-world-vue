@@ -1,0 +1,10 @@
+{
+  "image": "tjhdocker/vsc-javascript:v0.1",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/my-app,type=bind",
+  "workspaceFolder": "/workspaces/my-app",
+"remoteUser": "node",
+  "mounts": [
+    "source=vue-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+"postCreateCommand": "sudo chown node node_modules"
+}
