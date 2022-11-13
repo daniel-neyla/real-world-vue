@@ -76,21 +76,24 @@ export default {
 
 .page-prev,
 .page-next {
-  display: inline-block;
+  flex: 1;
   text-decoration: none;
   color: #2c3e50;
 }
 
 .page-prev {
-  justify-self: flex-start;
+  text-align: left;
 }
 
 .page-next {
-  justify-self: flex-end;
+  text-align: right;
 }
 
-.page-prev:hover,
+/* .page-prev:hover,
 .page-next:hover {
   color: #42b983;
-}
+} */
+
+
+
 </style>
