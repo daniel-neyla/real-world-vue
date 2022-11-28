@@ -1,6 +1,6 @@
 <template>
-  <div v-if="event">
-    <h1>{{ event.title }}</h1>
+  <div v-if="event" >
+    <h1>{{ event.title}}</h1>
     
 
     <nav>
@@ -18,32 +18,13 @@
 </template>
 
 <script>
-import EventService from "@/services/EventService.js";
+
 
 export default {
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      event: null,
-      
-    };
-  },
-  created() {
-    // fetch event by id and display it
-    console.log(this.id);
-    EventService.getEvent(this.id)
-
-      .then((response) => {
-        this.event = response.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
+computed: {
+  event() {
+    return this.$store.state.event
+  }
+}
 };
 </script>

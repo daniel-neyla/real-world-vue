@@ -25,7 +25,7 @@
 // @ is an alias to /src
 import EventCard from "@/components/EventCard.vue";
 import EventService from "@/services/EventService.js";
-import { watchEffect } from "vue";
+
 
 export default {
   name: "EventList",
@@ -39,18 +39,37 @@ export default {
       totalEvents: 0,
     };
   },
-  created() {
-    watchEffect(() => {
-      this.event = null;
-      EventService.getEvents(2, this.page)
+  beforeRouteEnter(routeTo, routeFrom, next) {
+
+
+      EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
         .then((response) => {
-          this.events = response.data;
-          this.totalEvents = response.headers["x-total-count"];
+          next(comp => {
+            console.log(comp)
+            comp.events = response.data;
+            comp.totalEvents = response.headers["x-total-count"];
+          })
         })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+        .catch(() => {
+          next({ name: "NetworkErr" })
+        })
+
+  },
+  beforeRouteUpdate(routeTo) {
+
+
+      return EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+        .then((response) => {
+       
+
+            this.events = response.data;
+            this.totalEvents = response.headers["x-total-count"];
+
+        })
+        .catch(() => {
+          return { name: "NetworkErr" }
+        })
+
   },
   computed: {
     hasNextPage() {
@@ -66,26 +85,37 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  gap: 35px;
+  margin-top: 50px ;
 }
 
 .pagination {
-  display: flex;
+
+  position: absolute;
 
   width: 300px;
+  bottom: -30px;
+
 }
 
 .page-prev,
 .page-next {
-  flex: 1;
+  /* flex: 1; */
+  position: absolute;
   text-decoration: none;
   color: #2c3e50;
+  font-weight: 400;
+  font-size: 25px;
 }
 
 .page-prev {
+  left: -80px;
   text-align: left;
 }
 
 .page-next {
+  right: -80px;
   text-align: right;
 }
 
@@ -93,7 +123,4 @@ export default {
 .page-next:hover {
   color: #42b983;
 } */
-
-
-
 </style>

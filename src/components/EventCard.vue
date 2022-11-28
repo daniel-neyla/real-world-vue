@@ -26,11 +26,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
-  width: 250px;
-  margin-bottom: 18px;
+  width: 450px;
+  height: 200px;
   border: 2px solid #39495c;
   padding: 20px;
+
 }
 
 .event-card:hover {

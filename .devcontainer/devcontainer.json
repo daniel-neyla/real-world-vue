@@ -6,5 +6,10 @@
   "mounts": [
     "source=vue-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
-"postCreateCommand": "sudo chown node node_modules"
+"postCreateCommand": "sudo chown node node_modules",
+"portsAttributes": {
+	"8000": {
+		"label": "3000"
+	}
+}
 }
