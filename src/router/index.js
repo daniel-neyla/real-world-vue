@@ -54,8 +54,9 @@ const routes = [
     props: true,
     component: EventLayout,
     beforeEnter: to => {
-      const existingEvent = store.state.events.find(event => event.id === to.params.id)
       const eventStore = useEventStore()
+      const existingEvent = eventStore.events.find(event => event.id === to.params.id)
+      
       if(existingEvent) {
         
         eventStore.setEvent(existingEvent)
