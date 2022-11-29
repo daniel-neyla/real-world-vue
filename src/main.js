@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import {createPinia} from 'pinia'
 import store from './store'
 import 'nprogress/nprogress.css'
 import upperFirst from 'lodash/upperFirst'
@@ -27,4 +28,4 @@ requireComponent.keys().forEach(fileName => {
 
 
 
-app.use(router).use(store).mount('#app')
+app.use(router).use(store).use(createPinia()).mount('#app')

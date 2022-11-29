@@ -43,9 +43,9 @@
 <script>
 
 import UniqueID from "@/features/UniqueID";
-import EventService from "@/services/EventService.js";
-import axios from "axios";
-
+import { useUserStore } from "@/store/UserStore";
+import { useEventStore } from "@/store/EventStore";
+import { useFlashMessageStore } from "@/store/FlashMessageStore";
 
 export default {
 
@@ -90,25 +90,39 @@ export default {
     },  
   
     sendEvent() {
-      this.event.id = UniqueID()
-      this.event.organizer = this.$store.state.user
-      EventService.postEvent(this.event).then((response) => {
-        console.log('Response', response)
+
+      const event = {
+        ...this.event,
+        id: UniqueID(),
+        organizer: this.userStore.user
+
+      }
+      
+
+
+      this.eventStore.createEvent(event).then(() => {
         
 
-      }).catch((err) => console.log('Error', err)).finally(() => {
-        this.resetEvent()
-        this.$router.push({name: 'EventList'})
+        this.$router.push({name: 'EventDetails', params: {id: event.id}})
       
-        this.$store.commit('SET_FLASHMESSAGE', 'Your Event was successfully created')  
-
-          setTimeout(() => {
-            this.$store.commit('SET_FLASHMESSAGE', '')
-          }, 3000)
+     
+        
+        this.flashMessageStore.setFlashMessage('Your Event was successfully created')
         })
+      
         
     }
   },
+  setup() {
+    const userStore = useUserStore()
+    const eventStore = useEventStore()
+    const flashMessageStore = useFlashMessageStore()
+    return {
+      userStore, 
+      eventStore,
+      flashMessageStore
+    }
+  }
 
 }
 </script>

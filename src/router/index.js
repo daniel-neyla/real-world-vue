@@ -12,6 +12,9 @@ import EventLayout from "../views/event/layout.vue";
 import NProgress from 'nprogress'
 import EventService from "@/services/EventService.js";
 import store from '@/store'
+import { useFlashMessageStore } from "@/store/FlashMessageStore";
+import { useEventStore } from "@/store/EventStore";
+
 
 const routes = [
   {
@@ -51,15 +54,24 @@ const routes = [
     props: true,
     component: EventLayout,
     beforeEnter: to => {
+      const existingEvent = store.state.events.find(event => event.id === to.params.id)
+      const eventStore = useEventStore()
+      if(existingEvent) {
+        
+        eventStore.setEvent(existingEvent)
+       
+      } else {
+      
       return EventService.getEvent(to.params.id)
 
       .then((response) => {
-       
-        store.commit('SET_EVENT', response.data)
+        
+
+        eventStore.setEvent(response.data)
         
       })
       .catch((err) => {
-        console.log('error')
+        
         if(err.response && err.response.status == 404) {
 
         return {
@@ -71,6 +83,7 @@ const routes = [
         }
 
       });
+    }
     },
     children: [
       {
@@ -130,8 +143,12 @@ const router = createRouter({
     }
 
     
-  }
+  },
+
+ 
 });
+
+
 
 router.beforeEach((to, from) => {
   NProgress.start()
@@ -140,12 +157,12 @@ router.beforeEach((to, from) => {
 
   const notAuthorized = true
   if(to.meta.requiredAuth && notAuthorized) {
-    store.commit('SET_FLASHMESSAGE', 'Sorry, you are not authorized to view this page')  
 
-    setTimeout(() => {
-      store.commit('SET_FLASHMESSAGE', '')
-    }, 3000)
+    
+    const flashMessageStore = useFlashMessageStore()
 
+
+    flashMessageStore.setFlashMessage('Sorry, you are not authorized to view this page')
 
     if(from.href) {
       return false

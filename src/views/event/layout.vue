@@ -18,12 +18,18 @@
 </template>
 
 <script>
-
+import { useEventStore } from '@/store/EventStore';
 
 export default {
 computed: {
   event() {
-    return this.$store.state.event
+    return this.eventStore.event
+  }
+}, 
+setup() {
+  const eventStore = useEventStore()
+  return {
+    eventStore
   }
 }
 };

@@ -42,7 +42,7 @@ export default {
   beforeRouteEnter(routeTo, routeFrom, next) {
 
 
-      EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+      EventService.getEvents(3, parseInt(routeTo.query.page) || 1)
         .then((response) => {
           next(comp => {
             console.log(comp)
@@ -58,7 +58,7 @@ export default {
   beforeRouteUpdate(routeTo) {
 
 
-      return EventService.getEvents(2, parseInt(routeTo.query.page) || 1)
+      return EventService.getEvents(3, parseInt(routeTo.query.page) || 1)
         .then((response) => {
        
 
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     hasNextPage() {
-      let totalPages = Math.ceil(this.totalEvents / 2);
+      let totalPages = Math.ceil(this.totalEvents / 3);
       return this.page < totalPages;
     },
   },

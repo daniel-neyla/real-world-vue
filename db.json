@@ -65,6 +65,94 @@
       "time": "11:00",
       "petsAllowed": false,
       "organizer": "Brody Kill"
+    },
+    {
+      "id": "9ff058a3-e526-4edc-b939-569baea47081",
+      "category": "Education",
+      "title": "Vuex",
+      "description": "Learn about vuex",
+      "location": "Vue mastery",
+      "date": "Today",
+      "time": "Now",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "359065b0-092b-4e78-bbac-9d0c36840beb",
+      "category": "Community",
+      "title": "Test",
+      "description": "See if everything works",
+      "location": "Here",
+      "date": "28/11/2022",
+      "time": "16 ",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "d055e829-0b7c-4db9-8bb2-90d2f330c830",
+      "category": "Animal welfare",
+      "title": "Horse Racing",
+      "description": "Horses running against each other",
+      "location": "New York",
+      "date": "Tomorrow",
+      "time": "12:00",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "d8071c3e-a0c3-4ce7-b5d6-4644237d85b6",
+      "category": "Housing",
+      "title": "Another test",
+      "description": "Testing my application",
+      "location": "Here",
+      "date": "Today",
+      "time": "Now",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "7308123d-a619-47f6-a38e-194193a2979a",
+      "category": "Housing",
+      "title": "Another one",
+      "description": "Another one",
+      "location": "Another one",
+      "date": "Another one",
+      "time": "Another one",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "505d1af6-4c4e-4f35-a744-014e4aa0e3d8",
+      "category": "Housing",
+      "title": "Investment",
+      "description": "Speach about investment",
+      "location": "Penthouse",
+      "date": "Next Year",
+      "time": "13:00",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "44905c7f-1b3a-47f7-8a8e-13d6ecc17b6f",
+      "category": "Food",
+      "title": "The big cooking show ",
+      "description": "Television show for people around the world to learn real cooking!",
+      "location": "",
+      "date": "",
+      "time": "",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
+    },
+    {
+      "id": "6649003b-3e73-486c-8165-f56d5d765517",
+      "category": "Sustainability",
+      "title": "Environment",
+      "description": "Learn how to help our world",
+      "location": "Mountains",
+      "date": "01/01/2023",
+      "time": "14:00",
+      "petsAllowed": true,
+      "organizer": "Daniel Hornung"
     }
   ]
 }

@@ -1,17 +1,33 @@
 <template>
   <nav>
-    <div id="flashMessage" v-if="this.$store.state.flashMessage">
-      {{this.$store.state.flashMessage}}
+    <div id="flashMessage" v-if="FlashMessageStore.flashMessage">
+      {{FlashMessageStore.flashMessage}}
     </div>
     <router-link :to="{ name: 'EventList' }">Events</router-link> |
     <router-link :to="{ name: 'about' }">About</router-link> |
     <router-link :to="{name: 'create-event'}">Create Event</router-link>
+    <p>Logged in as {{UserStore.firstName}}</p>
   </nav>
   <router-view />
 </template>
 
 
 <script>
+
+import {useFlashMessageStore} from '@/store/FlashMessageStore'
+import {useUserStore} from '@/store/UserStore'
+
+
+export default {
+  setup() {
+    const FlashMessageStore = useFlashMessageStore()
+    const UserStore = useUserStore()
+    return {
+      FlashMessageStore,
+      UserStore
+    }
+  }
+}
 
 </script>
 
